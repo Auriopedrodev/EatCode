@@ -59,131 +59,113 @@ public class Eat_Code {
             }
             
             
-                /*System.out.println("--------MENU--------");
-                System.out.println("[1] - JOGADOR: ");
-                System.out.println("[2] - ADMINISTRADOR: ");
-                System.out.println("[3] - INICIAR JOGO:");
-
-                System.out.println(" ");
-
-                System.out.println("Digite a opcao desejada: ");
-                opcao = ler.nextInt();*/
-
-                //while(opcao > 0 && opcao < 4){
                 if (opcao > 0 && opcao < 4){
                     switch (opcao) {
                         case 1: 
-                            //nome.add(name);
-                                //name = ler.nextLine();
-                            /*System.out.println("Digite o nome do Jogador: ");
-                            String nomes = ler.nextLine();
-                            nome.add(nomes);
-                            nomes = ler.nextLine();*/
-
-
-                            /*String nomes = ler.nextLine();
-                                nome.add(nomes);
-                                nomes = ler.nextLine();
-                                nome.add(nomes);
-                                nomes = ler.nextLine();*/
-
+            
                             System.out.println("");
                             System.out.println("Quantos jogadores deseja inserir: ");
                             int num = ler.nextInt();
-
-
-                            ArrayList <String> nome = new ArrayList <String>();
 
                             System.out.println("");
                             System.out.println("-----PREENCHA OS DADOS DO JOGADOR----- ");
 
                             ler.nextLine();
-
+                            
+                            ArrayList <String> nome = new ArrayList <String>();
+                            
                             for (int i = 1; i <= num; i++) {
-                                System.out.println("Digite o nome do Jogador ["+ i +"]: ");
+                                System.out.println("Digite o nome do Jogador: ");
                                 String nomes = ler.nextLine();
-                                //char letra = nomes.charAt(i);
-                                nome.add(nomes);
+                                
+                                //Funcao que permite o preenchimento do nome
+                                Jogador.PreencherNome(nome, nomes);
                             }
-
-                            ArrayList <Integer> dia = new ArrayList <Integer>();
-                            ArrayList <Integer> mes = new ArrayList <Integer>();
-                            ArrayList <Integer> ano = new ArrayList <Integer>();
-
-
-                            //ler.nextLine();
 
                             int day, month, year;
+                            
+                            ArrayList <Integer> dia = new ArrayList <Integer>();
+                            
+                            ArrayList <Integer> mes = new ArrayList <Integer>();
+                            
+                            ArrayList <Integer> ano = new ArrayList <Integer>();
 
                             System.out.println("");
-                            for (int i = 1; i <= num; i++) {
-                                System.out.println("Digite o dia do jogador ["+ i +"]:");
+                            
+                            System.out.println("Digite o dia do jogador:");
+                            day = ler.nextInt();
+                            while (!(day > 0 && day <= 31)) {
+                                System.out.println("Dia do jogador e inexistente");
+                                System.out.println("Digite novamente o dia: ");
                                 day = ler.nextInt();
-                                while (!(day > 0 && day <= 31)) {
-                                    System.out.println("Dia do jogador ["+ i +"] e inexistente");
-                                    System.out.println("Digite novamente o dia: ");
-                                    day = ler.nextInt();
-                                } 
-                                
+                            } 
+                            
+                            //Funcao que permite o preenchimento do dia
+                            for (int i = 1; i <= num; i++) {            
                                 if (day > 0 && day <= 31) {
-                                    dia.add(day);
+                                    Jogador.PreencherDia(dia, day, num);
                                 }
                             }
-
+                            
+                            
                             System.out.println("");
-                            for (int i = 1; i <= num; i++) {
-                                System.out.println("Digite o mes do jogador ["+ i +"]::");
+                            System.out.println("Digite o mes do jogador: ");
+                            month = ler.nextInt();
+                            while (!(month > 0 && month <= 12)) {
+                                System.out.println("Mes do jogador e inexistente");
+                                System.out.println("Digite novamente o mes: ");
                                 month = ler.nextInt();
-                                while (!(month > 0 && month <= 12)) {
-                                    System.out.println("Mes do jogador ["+ i +"] e inexistente");
-                                    System.out.println("Digite novamente o mes: ");
-                                    month = ler.nextInt();
-                                    }
+                            }
+                                
+                            //Funcao que permite o preenchimento do mes
+                            for (int i = 1; i <= num; i++) {   
                                 if (month > 0 && month <= 12) {
-                                    mes.add(month);
+                                    Jogador.PreencherMes(mes, month, num);
                                 }
                             }
 
                             System.out.println("");
-                            for (int i = 1; i <= num; i++) {
-                                System.out.println("Digite o ano do jogador ["+ i +"]::");
-                                year = ler.nextInt();
+                            System.out.println("Digite o ano do jogador: ");
+                            year = ler.nextInt();
                                 while (!(year > 0)) {
-                                    System.out.println("Ano do jogador ["+ i +"] e inexistente");
+                                    System.out.println("Ano do jogador e inexistente");
                                     System.out.println("Digite novamente o ano: ");
                                     year = ler.nextInt();
                                 }
-                                if (year > 0){
-                                    ano.add(year);
+                                
+                                //Funcao que permite o preenchimento do ano
+                                for (int i = 1; i <= num; i++) {
+                                    if (year > 0) {
+                                        Jogador.PreencherAno(ano, year, num);
+                                    }
                                 }
-                            }
 
                             ler.nextLine();
 
                             System.out.println("");
                             System.out.println("---- APRESENTACAO DOS DADOS----");
-                            for (String names: nome) {
-                                System.out.println("Nome: " + names);
-                            }
-
-                            for (int dias: dia) {
-                                System.out.print("Data de Nascimento: " + dias + "/");
-                            }
-                            for (int meses: mes) {
-                                System.out.print(meses + "/");
-                            }
-                            for (int anos: ano) {
-                                System.out.println(anos);
-                            }
+                            //Funcao que permite a impressao do nome
+                            Jogador.ImprimirNome(nome);
+                            
+                            //Funcao que permite a impressao do dia
+                            Jogador.ImprimirDia(dia);
+                            
+                            //Funcao que permite a impressao do mes
+                            Jogador.ImprimirMes(mes);
+                            
+                            //Funcao que permite a impressao do ano
+                            Jogador.ImprimirAno(ano);
+                            
                             System.out.println("Preenchimento dos dados feito com sucesso! ");
                             break;
 
 
                         case 2:
                             int niveis, nTemas, nPerguntas, temaP;
-                            ArrayList <String> temas = new ArrayList <String>();
-                            ArrayList <String> nivel = new ArrayList <String>();
                             ArrayList <String> perguntas = new ArrayList <String>();
+                            ArrayList <String> respostas = new ArrayList<String>();
+                            ArrayList <String> nivel = new ArrayList <String>();
+                            ArrayList <String> opcoes = new ArrayList <String>();
                             
                             System.out.println("Quantos niveis o jogo deve possuir? ");
                             niveis = ler.nextInt();
@@ -203,7 +185,7 @@ public class Eat_Code {
                                     String difnivel = ler.nextLine();
                                     nivel.add(difnivel);
                                 }
-                                
+                            }   
                                 System.out.println("");
                                 System.out.println("-----NIVEIS-----");
                                 cont = 0;
@@ -212,52 +194,57 @@ public class Eat_Code {
                                     System.out.println("["+cont+"]:" + dificuldade);
                                 }
                                 
-                                ler.nextLine();
+                                //ler.nextLine();
+                                //System.out.println("");
                                 
                                 System.out.println("");
                                 System.out.println("Deseja jogar em qual nivel de dificuldade? ");
                                 int dif = ler.nextInt();
                                 
-                                while (dif < 1 || dif > nivel.size() ) {                                    
+                                /*while (dif < 1 || dif > nivel.size() ) {                                    
                                     System.out.println("Nivel inexistente!");
                                     System.out.println("Digite novamente o nivel de dificuldade:");
                                     dif = ler.nextInt();
-                                }
+                                }*/
                                 
-                                if(dif > 0 && dif <= nivel.size()){
-                                    switch (nivel.size()){
+                                //if(dif > 0 && dif <= nivel.size()){
+                                    switch (dif){
                                         case 1:
                                             System.out.println("Quantos temas deseja inserir? ");
                                             nTemas = ler.nextInt();
 
                                             ler.nextLine();
 
-                                            while (!(nTemas == 4)) {                                        
-                                                System.out.println("Deve ter 4 temas!");
+                                            while (!(nTemas == 3)) {                                        
+                                                System.out.println("Deve ter 3 temas!");
                                                 System.out.println("Digite novamente! ");
                                                 nTemas = ler.nextInt();
                                                 break;
                                             }
 
-                                            ler.nextLine();
-
+                                            //ler.nextLine();
+                                            System.out.println("");
+                                            
                                             System.out.println("-----PREENCHIMENTO DOS TEMAS PARA ESTE NIVEL-----");
-                                            if ((nTemas == 4)){
-                                                for (int i = 1; i <= 4; i++) {
+                                            ArrayList <String> temas = new ArrayList <String>();
+                                            
+                                            if (nTemas == 3){
+                                                for (int i = 1; i <= 3; i++) {
                                                     System.out.print("Tema [" + i + "]: ");
                                                     String tema = ler.nextLine();
-                                                    temas.add(tema);
+
+                                                    //
+                                                    Administrador.PreencherTema(temas, tema);
                                                 }
                                             }
 
-                                            ler.nextLine();
-
-                                            cont = 0;
+                                            //ler.nextLine();
+                                            System.out.println("");
+                                            
                                             System.out.println("-----TEMAS-----");
-                                            for (String themes : temas) {
-                                                cont++;
-                                                System.out.println("["+cont+"]: "  + themes);
-                                            }
+                                            
+                                            //
+                                            Administrador.ImprimirTema(temas);
 
                                             System.out.println("");
                                             System.out.println("Digite o numero de perguntas que deseja inserir:");
@@ -268,543 +255,610 @@ public class Eat_Code {
                                                 System.out.println("Digite novamente o numero de perguntas que deseja inserir: ");
                                                 nPerguntas = ler.nextInt();
                                             }
-
-                                            ler.nextLine();
+                                            
+                                            System.out.println("");
+                                            //ler.nextLine();
 
                                             System.out.println("Digite qual o tema que deseja que a pergunta seja inserida:");
                                             temaP = ler.nextInt();
 
-                                            System.out.println("");
-                                            while ((temaP < 1 || temaP > temas.size())) {
+                                           // System.out.println("");
+                                            /*while ((temaP < 1 || temaP > temas.size())) {
                                                 System.out.println("Deve selecionar as opcoes disponiveis!");
                                                 System.out.println("Digite navamente o tema que deseja que a pergunta seja inserida!");
                                                 temaP = ler.nextInt();
-                                            }
-                                           if (temaP > 0 && temaP <= temas.size()) {
+                                            }*/
+                                           //if (temaP > 0 && temaP <= temas.size()) {
                                             ler.nextLine();
-                                                switch (temas.size()){
+                                            
+                                            //System.out.println("");
+                                            if (nPerguntas == 3 || nPerguntas == 4) {
+                                                switch (temaP ){ //temas.size()
                                                     case 1:
-                                                        if (nPerguntas == 3 || nPerguntas == 4) {
-                                                            System.out.println("-----PREENCHIMENTO DAS PERGUNTAS PARA ESTE NIVEL-----");
-                                                            cont = 0;
-                                                            for (int i = 1; i <= nPerguntas; i++) {
-                                                                cont++;
-                                                                System.out.print("Pergunta [" +cont+ "]: ");
-                                                                String  pergunta = ler.nextLine();
-                                                                perguntas.add(pergunta);
-                                                            }
+                                                        System.out.println("-----PREENCHIMENTO DAS PERGUNTAS PARA ESTE NIVEL-----");
 
-                                                            ler.nextLine();
+                                                        for (int i = 1; i <= nPerguntas; i++) {
+                                                            System.out.print("Pergunta [" +i+ "]: ");
+                                                            String  pergunta = ler.nextLine();
 
-                                                            System.out.println("-----APRESENTACAO DAS PERGUNTAS-----");
-                                                            cont = 0;
-                                                            for (String question : perguntas) {
-                                                                cont++;
-                                                                System.out.println("["+ cont+"]: " + question);
+                                                            //
+                                                            System.out.println("Digite as respostas [" + i + "]:");
+                                                            String resposta = ler.nextLine();
+                                                            Administrador.PerguntaResposta(perguntas, respostas, pergunta, resposta);
+                                                        }
+
+                                                        System.out.println("");
+                                                        //ler.nextLine();
+
+                                                        System.out.println("-----PERGUNTAS-----");
+                                                        //
+                                                        Administrador.ImprimirPergunta(perguntas);
+
+                                                        System.out.println("");
+                                                        System.out.println("-----OPCOES DAS RESPOSTAS-----");
+                                                        for (int i = 1; i <= nPerguntas ; i++) {
+                                                            System.out.println("OPCOES DE RESPOSTAS DA PERGUNTA [" + i + "]:");
+                                                            for (int j = 1; j <= nPerguntas; j++) {
+                                                                System.out.print("Opcao [" + j + "]: ");
+                                                                String  opResposta = ler.nextLine();
+                                                                //
+                                                                Administrador.PreencherOpcoesDasRespotas(opcoes, opResposta);
                                                             }
                                                         }
-                                                        break;
+
+
+                                                        System.out.println("");
+
+                                                     System.out.println("-----OPCOES-----");
+                                                         for (int j = 1; j <= nPerguntas; j++) {
+                                                             System.out.println("PERGUNTA [" + j + "]:");
+                                                             Administrador.ImprimirOpcoes(opcoes);
+                                                         }
+
+                                                     ler.nextLine();
+
+                                                     for (int i = 1; i <= opcoes.size(); i++){
+                                                         System.out.println("Selcione a opcao certa da pergunta [" + i + "]:");
+                                                         int opCerta = ler.nextInt();
+                                                         Administrador.OpcaoCerta(perguntas, opcoes);
+                                                     }
+                                                     //
+                                                     for (int i = 1; i <= opcoes.size(); i++){
+                                                         System.out.println("RESPOSTA DA OPCAO [" + i + "]:");
+                                                         Administrador.OpcaoCerta(perguntas, opcoes);
+                                                     }
+                                                     System.out.println("");        
+                                                    break;
                                                     case 2:
-                                                        if (nPerguntas == 3 || nPerguntas == 4) {
-                                                            System.out.println("-----PREENCHIMENTO DAS PERGUNTAS PARA ESTE NIVEL-----");
-                                                            cont = 0;
-                                                            for (int i = 1; i <= nPerguntas; i++) {
-                                                                cont++;
-                                                                System.out.print("Pergunta [" +cont+ "]: ");
-                                                                String  pergunta = ler.nextLine();
-                                                                perguntas.add(pergunta);
-                                                            }
+                                                        System.out.println("-----PREENCHIMENTO DAS PERGUNTAS PARA ESTE NIVEL-----");
+                                                            
+                                                               for (int i = 1; i <= nPerguntas; i++) {
+                                                                   System.out.print("Pergunta [" +i+ "]: ");
+                                                                   String  pergunta = ler.nextLine();
+                                                                   
+                                                                   //
+                                                                   System.out.println("Digite as respostas [" + i + "]:");
+                                                                   String resposta = ler.nextLine();
+                                                                   Administrador.PerguntaResposta(perguntas, respostas, pergunta, resposta);
+                                                               }
+                                                            
+                                                               System.out.println("");
+                                                            //ler.nextLine();
 
+                                                            System.out.println("-----PERGUNTAS-----");
+                                                            //
+                                                            Administrador.ImprimirPergunta(perguntas);
+                                                            
+                                                            System.out.println("");
+                                                            System.out.println("-----OPCOES DAS RESPOSTAS-----");
+                                                            for (int i = 1; i <= nPerguntas ; i++) {
+                                                                System.out.println("OPCOES DE RESPOSTAS DA PERGUNTA [" + i + "]:");
+                                                                for (int j = 1; j <= nPerguntas; j++) {
+                                                                    System.out.print("Opcao [" + j + "]: ");
+                                                                    String  opResposta = ler.nextLine();
+                                                                    //
+                                                                    Administrador.PreencherOpcoesDasRespotas(opcoes, opResposta);
+                                                                }
+                                                            }
+                                                            
+                                                            
+                                                            System.out.println("");
+                                                            
+                                                            System.out.println("-----OPCOES-----");
+                                                                for (int j = 1; j <= nPerguntas; j++) {
+                                                                    System.out.println("PERGUNTA [" + j + "]:");
+                                                                    Administrador.ImprimirOpcoes(opcoes);
+                                                                }
+                                                            
                                                             ler.nextLine();
-
-                                                            System.out.println("-----APRESENTACAO DAS PERGUNTAS-----");
-                                                            cont = 0;
-                                                            for (String question : perguntas) {
-                                                                cont++;
-                                                                System.out.println("["+ cont+"]: " + question);
+                                                            
+                                                            for (int i = 1; i <= opcoes.size(); i++){
+                                                                System.out.println("Selcione a opcao certa da pergunta [" + i + "]:");
+                                                                int opCerta = ler.nextInt();
+                                                                Administrador.OpcaoCerta(perguntas, opcoes);
                                                             }
-                                                        }
+                                                            //
+                                                            for (int i = 1; i <= opcoes.size(); i++){
+                                                                System.out.println("RESPOSTA DA OPCAO [" + i + "]:");
+                                                                Administrador.OpcaoCerta(perguntas, opcoes);
+                                                            }
+                                                            System.out.println("");
                                                         break;
                                                     case 3:
-                                                        if (nPerguntas == 3 || nPerguntas == 4) {
-                                                            System.out.println("-----PREENCHIMENTO DAS PERGUNTAS PARA ESTE NIVEL-----");
-                                                            cont = 0;
-                                                            for (int i = 1; i <= nPerguntas; i++) {
-                                                                cont++;
-                                                                System.out.print("Pergunta [" +cont+ "]: ");
-                                                                String  pergunta = ler.nextLine();
-                                                                perguntas.add(pergunta);
-                                                            }
+                                                        System.out.println("-----PREENCHIMENTO DAS PERGUNTAS PARA ESTE NIVEL-----");
+                                                               for (int i = 1; i <= nPerguntas; i++) {
+                                                                   System.out.print("Pergunta [" +i+ "]: ");
+                                                                   String  pergunta = ler.nextLine();
+                                                                   
+                                                                   //
+                                                                   System.out.println("Digite as respostas [" + i + "]:");
+                                                                   String resposta = ler.nextLine();
+                                                                   Administrador.PerguntaResposta(perguntas, respostas, pergunta, resposta);
+                                                               }
+                                                            
+                                                               System.out.println("");
+                                                            //ler.nextLine();
 
+                                                            System.out.println("-----PERGUNTAS-----");
+                                                            //
+                                                            Administrador.ImprimirPergunta(perguntas);
+                                                            
+                                                            System.out.println("");
+                                                            System.out.println("-----OPCOES DAS RESPOSTAS-----");
+                                                            for (int i = 1; i <= nPerguntas ; i++) {
+                                                                System.out.println("OPCOES DE RESPOSTAS DA PERGUNTA [" + i + "]:");
+                                                                for (int j = 1; j <= nPerguntas; j++) {
+                                                                    System.out.print("Opcao [" + j + "]: ");
+                                                                    String  opResposta = ler.nextLine();
+                                                                    //
+                                                                    Administrador.PreencherOpcoesDasRespotas(opcoes, opResposta);
+                                                                }
+                                                            }
+                                                            
+                                                            
+                                                            System.out.println("");
+                                                            
+                                                            System.out.println("-----OPCOES-----");
+                                                                for (int j = 1; j <= nPerguntas; j++) {
+                                                                    System.out.println("PERGUNTA [" + j + "]:");
+                                                                    Administrador.ImprimirOpcoes(opcoes);
+                                                                }
+                                                            
                                                             ler.nextLine();
-
-                                                            System.out.println("-----APRESENTACAO DAS PERGUNTAS-----");
-                                                            cont = 0;
-                                                            for (String question : perguntas) {
-                                                                cont++;
-                                                                System.out.println("["+ cont+"]: " + question);
+                                                            
+                                                            for (int i = 1; i <= opcoes.size(); i++){
+                                                                System.out.println("Selcione a opcao certa da pergunta [" + i + "]:");
+                                                                int opCerta = ler.nextInt();
+                                                                Administrador.OpcaoCerta(perguntas, opcoes);
                                                             }
-                                                        }
+                                                            //
+                                                            for (int i = 1; i <= opcoes.size(); i++){
+                                                                System.out.println("RESPOSTA DA OPCAO [" + i + "]:");
+                                                                Administrador.OpcaoCerta(perguntas, opcoes);
+                                                            }
+                                                            System.out.println("");
                                                         break;
                                                     case 4:
-                                                        if (nPerguntas == 3 || nPerguntas == 4) {
-                                                            System.out.println("-----PREENCHIMENTO DAS PERGUNTAS PARA ESTE NIVEL-----");
-                                                            cont = 0;
-                                                            for (int i = 1; i <= nPerguntas; i++) {
-                                                                cont++;
-                                                                System.out.print("Pergunta [" +cont+ "]: ");
-                                                                String  pergunta = ler.nextLine();
-                                                                perguntas.add(pergunta);
-                                                            }
+                                                        System.out.println("-----PREENCHIMENTO DAS PERGUNTAS PARA ESTE NIVEL-----");
+                                                            
+                                                               for (int i = 1; i <= nPerguntas; i++) {
+                                                                   System.out.print("Pergunta [" +i+ "]: ");
+                                                                   String  pergunta = ler.nextLine();
+                                                                   
+                                                                   //
+                                                                   System.out.println("Digite as respostas [" + i + "]:");
+                                                                   String resposta = ler.nextLine();
+                                                                   Administrador.PerguntaResposta(perguntas, respostas, pergunta, resposta);
+                                                               }
+                                                            
+                                                               System.out.println("");
+                                                            //ler.nextLine();
 
+                                                            System.out.println("-----PERGUNTAS-----");
+                                                            //
+                                                            Administrador.ImprimirPergunta(perguntas);
+                                                            
+                                                            System.out.println("");
+                                                            System.out.println("-----OPCOES DAS RESPOSTAS-----");
+                                                            for (int i = 1; i <= nPerguntas ; i++) {
+                                                                System.out.println("OPCOES DE RESPOSTAS DA PERGUNTA [" + i + "]:");
+                                                                for (int j = 1; j <= nPerguntas; j++) {
+                                                                    System.out.print("Opcao [" + j + "]: ");
+                                                                    String  opResposta = ler.nextLine();
+                                                                    //
+                                                                    Administrador.PreencherOpcoesDasRespotas(opcoes, opResposta);
+                                                                }
+                                                            }
+                                                            
+                                                            
+                                                            System.out.println("");
+                                                            
+                                                            System.out.println("-----OPCOES-----");
+                                                                for (int j = 1; j <= nPerguntas; j++) {
+                                                                    System.out.println("PERGUNTA [" + j + "]:");
+                                                                    Administrador.ImprimirOpcoes(opcoes);
+                                                                }
+                                                            
                                                             ler.nextLine();
-
-                                                            System.out.println("-----APRESENTACAO DAS PERGUNTAS-----");
-                                                            cont = 0;
-                                                            for (String question : perguntas) {
-                                                                cont++;
-                                                                System.out.println("["+ cont+"]: " + question);
+                                                            
+                                                            for (int i = 1; i <= opcoes.size(); i++){
+                                                                System.out.println("Selcione a opcao certa da pergunta [" + i + "]:");
+                                                                int opCerta = ler.nextInt();
+                                                                Administrador.OpcaoCerta(perguntas, opcoes);
                                                             }
-                                                        }
+                                                            //
+                                                            for (int i = 1; i <= opcoes.size(); i++){
+                                                                System.out.println("RESPOSTA DA OPCAO [" + i + "]:");
+                                                                Administrador.OpcaoCerta(perguntas, opcoes);
+                                                            }
+                                                            System.out.println("");
                                                         break;
                                                 }
-                                            }
-
-                                            break;
+                                            }    
                                         case 2:
-                                            System.out.println("Quantas temas deseja inserir? ");
+                                            System.out.println("Quantos temas deseja inserir? ");
                                             nTemas = ler.nextInt();
-                                            System.out.println("Quais os temas que deseja para este nivel? ");
 
                                             ler.nextLine();
 
-                                            while (!(nTemas == 4)) {                                        
-                                                System.out.println("So pode ter ate 4 temas!");
+                                            while (!(nTemas == 3)) {                                        
+                                                System.out.println("Deve ter 3 temas!");
                                                 System.out.println("Digite novamente! ");
                                                 nTemas = ler.nextInt();
                                                 break;
                                             }
 
-                                            ler.nextLine();
-
-                                            if ((nTemas == 4)){
-                                                for (int i = 1; i <= 4; i++) {
+                                            //ler.nextLine();
+                                            System.out.println("");
+                                            
+                                            System.out.println("-----PREENCHIMENTO DOS TEMAS PARA ESTE NIVEL-----");
+                                            ArrayList <String> temas = new ArrayList <String>();
+                                            
+                                            if (nTemas == 3){
+                                                for (int i = 1; i <= 3; i++) {
                                                     System.out.print("Tema [" + i + "]: ");
                                                     String tema = ler.nextLine();
-                                                    temas.add(tema);
+
+                                                    //
+                                                    Administrador.PreencherTema(temas, tema);
                                                 }
                                             }
 
-                                            ler.nextLine();
-
-                                            cont = 0;
+                                            //ler.nextLine();
+                                            System.out.println("");
+                                            
                                             System.out.println("-----TEMAS-----");
-                                            for (String themes : temas) {
-                                                cont++;
-                                                System.out.println("["+cont+"]: "  + themes);
-                                            }
+                                            
+                                            //
+                                            Administrador.ImprimirTema(temas);
+
                                             System.out.println("");
                                             System.out.println("Digite o numero de perguntas que deseja inserir:");
                                             nPerguntas = ler.nextInt();
 
                                             while (!(nPerguntas == 3 || nPerguntas == 4) ) {                                            
-                                                System.out.println("O jogo deve possuir no minimo 3 perguntas e no maximo 4!");
+                                                System.out.println("O jogo deve possuir no minimo 3 perguntas!");
                                                 System.out.println("Digite novamente o numero de perguntas que deseja inserir: ");
                                                 nPerguntas = ler.nextInt();
                                             }
-
-                                            ler.nextLine();
+                                            
+                                            System.out.println("");
+                                            //ler.nextLine();
 
                                             System.out.println("Digite qual o tema que deseja que a pergunta seja inserida:");
                                             temaP = ler.nextInt();
 
-                                            System.out.println("");
-                                            /*while (!(temaP == 4)) {
+                                           // System.out.println("");
+                                            /*while ((temaP < 1 || temaP > temas.size())) {
                                                 System.out.println("Deve selecionar as opcoes disponiveis!");
                                                 System.out.println("Digite navamente o tema que deseja que a pergunta seja inserida!");
                                                 temaP = ler.nextInt();
                                             }*/
-                                            //if (temaP == 4) {
+                                           //if (temaP > 0 && temaP <= temas.size()) {
                                             ler.nextLine();
-                                                switch (temaP){
+                                            
+                                            //System.out.println("");
+                                            if (nPerguntas == 3 || nPerguntas == 4) {
+                                                switch (temaP ){ //temas.size()
                                                     case 1:
-                                                        if (nPerguntas == 3 || nPerguntas == 4) {
                                                             System.out.println("-----PREENCHIMENTO DAS PERGUNTAS PARA ESTE NIVEL-----");
-                                                            cont = 0;
+                                                            
                                                             for (int i = 1; i <= nPerguntas; i++) {
-                                                                cont++;
-                                                                System.out.print("Pergunta [" +cont+ "]: ");
+                                                                System.out.print("Pergunta [" +i+ "]: ");
                                                                 String  pergunta = ler.nextLine();
-                                                                perguntas.add(pergunta);
+
+                                                                //
+                                                                System.out.println("Digite as respostas [" + i + "]:");
+                                                                String resposta = ler.nextLine();
+                                                                Administrador.PerguntaResposta(perguntas, respostas, pergunta, resposta);
                                                             }
 
-                                                            ler.nextLine();
+                                                            System.out.println("");
+                                                            //ler.nextLine();
 
-                                                            System.out.println("-----APRESENTACAO DAS PERGUNTAS-----");
-                                                            cont = 0;
-                                                            for (String question : perguntas) {
-                                                                cont++;
-                                                                System.out.println("["+ cont+"]: " + question);
-                                                            }
-                                                        }
-                                                        break;
-                                                    case 2:
-                                                        if (nPerguntas == 3 || nPerguntas == 4) {
-                                                            System.out.println("-----PREENCHIMENTO DAS PERGUNTAS PARA ESTE NIVEL-----");
-                                                            cont = 0;
-                                                            for (int i = 1; i <= nPerguntas; i++) {
-                                                                cont++;
-                                                                System.out.print("Pergunta [" +cont+ "]: ");
-                                                                String  pergunta = ler.nextLine();
-                                                                perguntas.add(pergunta);
+                                                            System.out.println("-----PERGUNTAS-----");
+                                                            //
+                                                            Administrador.ImprimirPergunta(perguntas);
+
+                                                            System.out.println("");
+                                                            System.out.println("-----OPCOES DAS RESPOSTAS-----");
+                                                            for (int i = 1; i <= nPerguntas ; i++) {
+                                                                System.out.println("OPCOES DE RESPOSTAS DA PERGUNTA [" + i + "]:");
+                                                                for (int j = 1; j <= nPerguntas; j++) {
+                                                                    System.out.print("Opcao [" + j + "]: ");
+                                                                    String  opResposta = ler.nextLine();
+                                                                    //
+                                                                    Administrador.PreencherOpcoesDasRespotas(opcoes, opResposta);
+                                                                }
                                                             }
 
-                                                            ler.nextLine();
 
-                                                            System.out.println("-----APRESENTACAO DAS PERGUNTAS-----");
-                                                            cont = 0;
-                                                            for (String question : perguntas) {
-                                                                cont++;
-                                                                System.out.println("["+ cont+"]: " + question);
-                                                            }
-                                                        }
-                                                        break;
-                                                    case 3:
-                                                        if (nPerguntas == 3 || nPerguntas == 4) {
-                                                            System.out.println("-----PREENCHIMENTO DAS PERGUNTAS PARA ESTE NIVEL-----");
-                                                            cont = 0;
-                                                            for (int i = 1; i <= nPerguntas; i++) {
-                                                                cont++;
-                                                                System.out.print("Pergunta [" +cont+ "]: ");
-                                                                String  pergunta = ler.nextLine();
-                                                                perguntas.add(pergunta);
-                                                            }
+                                                            System.out.println("");
 
-                                                            ler.nextLine();
+                                                         System.out.println("-----OPCOES-----");
+                                                             for (int j = 1; j <= nPerguntas; j++) {
+                                                                 System.out.println("PERGUNTA [" + j + "]:");
+                                                                 Administrador.ImprimirOpcoes(opcoes);
+                                                             }
 
-                                                            System.out.println("-----APRESENTACAO DAS PERGUNTAS-----");
-                                                            cont = 0;
-                                                            for (String question : perguntas) {
-                                                                cont++;
-                                                                System.out.println("["+ cont+"]: " + question);
-                                                            }
-                                                        }
-                                                        break;
-                                                    case 4:
-                                                        if (nPerguntas == 3 || nPerguntas == 4) {
-                                                            System.out.println("-----PREENCHIMENTO DAS PERGUNTAS PARA ESTE NIVEL-----");
-                                                            cont = 0;
-                                                            for (int i = 1; i <= nPerguntas; i++) {
-                                                                cont++;
-                                                                System.out.print("Pergunta [" +cont+ "]: ");
-                                                                String  pergunta = ler.nextLine();
-                                                                perguntas.add(pergunta);
-                                                            }
+                                                         ler.nextLine();
 
-                                                            ler.nextLine();
-
-                                                            System.out.println("-----APRESENTACAO DAS PERGUNTAS-----");
-                                                            cont = 0;
-                                                            for (String question : perguntas) {
-                                                                cont++;
-                                                                System.out.println("["+ cont+"]: " + question);
-                                                            }
-                                                        }
-                                                        break;
-                                                }
+                                                         for (int i = 1; i <= opcoes.size(); i++){
+                                                             System.out.println("Selcione a opcao certa da pergunta [" + i + "]:");
+                                                             int opCerta = ler.nextInt();
+                                                             Administrador.OpcaoCerta(perguntas, opcoes);
+                                                         }
+                                                         //
+                                                         for (int i = 1; i <= opcoes.size(); i++){
+                                                             System.out.println("RESPOSTA DA OPCAO [" + i + "]:");
+                                                             Administrador.OpcaoCerta(perguntas, opcoes);
+                                                         }
+                                                         System.out.println("");
+                                            break;
                                         case 3:
-                                            System.out.println("Quantas temas deseja inserir? ");
+                                            System.out.println("Quantos temas deseja inserir? ");
                                             nTemas = ler.nextInt();
-                                            System.out.println("Quais os temas que deseja para este nivel? ");
 
                                             ler.nextLine();
 
-                                            while (!(nTemas == 4)) {                                        
-                                                System.out.println("So pode ter ate 4 temas!");
+                                            while (!(nTemas == 3)) {                                        
+                                                System.out.println("Deve ter 3 temas!");
                                                 System.out.println("Digite novamente! ");
                                                 nTemas = ler.nextInt();
                                                 break;
                                             }
 
-                                            ler.nextLine();
-
-                                            if ((nTemas == 4)){
-                                                for (int i = 1; i <= 4; i++) {
+                                            //ler.nextLine();
+                                            System.out.println("");
+                                            
+                                            System.out.println("-----PREENCHIMENTO DOS TEMAS PARA ESTE NIVEL-----");
+                                            ArrayList <String> temas = new ArrayList <String>();
+                                            
+                                            if (nTemas == 3){
+                                                for (int i = 1; i <= 3; i++) {
                                                     System.out.print("Tema [" + i + "]: ");
                                                     String tema = ler.nextLine();
-                                                    temas.add(tema);
+
+                                                    //
+                                                    Administrador.PreencherTema(temas, tema);
                                                 }
                                             }
 
-                                            ler.nextLine();
-
-                                            cont = 0;
+                                            //ler.nextLine();
+                                            System.out.println("");
+                                            
                                             System.out.println("-----TEMAS-----");
-                                            for (String themes : temas) {
-                                                cont++;
-                                                System.out.println("["+cont+"]: "  + themes);
-                                            }
+                                            
+                                            //
+                                            Administrador.ImprimirTema(temas);
+
                                             System.out.println("");
                                             System.out.println("Digite o numero de perguntas que deseja inserir:");
                                             nPerguntas = ler.nextInt();
 
                                             while (!(nPerguntas == 3 || nPerguntas == 4) ) {                                            
-                                                System.out.println("O jogo deve possuir no minimo 3 perguntas! e no maximo 4!");
+                                                System.out.println("O jogo deve possuir no minimo 3 perguntas!");
                                                 System.out.println("Digite novamente o numero de perguntas que deseja inserir: ");
                                                 nPerguntas = ler.nextInt();
                                             }
-
-                                            ler.nextLine();
+                                            
+                                            System.out.println("");
+                                            //ler.nextLine();
 
                                             System.out.println("Digite qual o tema que deseja que a pergunta seja inserida:");
                                             temaP = ler.nextInt();
 
-                                            System.out.println("");
-                                            /*while (!(temaP == 4)) {
+                                           // System.out.println("");
+                                            /*while ((temaP < 1 || temaP > temas.size())) {
                                                 System.out.println("Deve selecionar as opcoes disponiveis!");
                                                 System.out.println("Digite navamente o tema que deseja que a pergunta seja inserida!");
                                                 temaP = ler.nextInt();
                                             }*/
-                                            //if (temaP == 4) {
+                                           //if (temaP > 0 && temaP <= temas.size()) {
                                             ler.nextLine();
-                                                switch (temaP){
+                                            
+                                            //System.out.println("");
+                                            if (nPerguntas == 3 || nPerguntas == 4) {
+                                                switch (temaP ){ //temas.size()
                                                     case 1:
-                                                        if (nPerguntas == 3 || nPerguntas == 4) {
                                                             System.out.println("-----PREENCHIMENTO DAS PERGUNTAS PARA ESTE NIVEL-----");
-                                                            cont = 0;
+                                                            
                                                             for (int i = 1; i <= nPerguntas; i++) {
-                                                                cont++;
-                                                                System.out.print("Pergunta [" +cont+ "]: ");
+                                                                System.out.print("Pergunta [" +i+ "]: ");
                                                                 String  pergunta = ler.nextLine();
-                                                                perguntas.add(pergunta);
+
+                                                                //
+                                                                System.out.println("Digite as respostas [" + i + "]:");
+                                                                String resposta = ler.nextLine();
+                                                                Administrador.PerguntaResposta(perguntas, respostas, pergunta, resposta);
                                                             }
 
-                                                            ler.nextLine();
+                                                            System.out.println("");
+                                                            //ler.nextLine();
 
-                                                            System.out.println("-----APRESENTACAO DAS PERGUNTAS-----");
-                                                            cont = 0;
-                                                            for (String question : perguntas) {
-                                                                cont++;
-                                                                System.out.println("["+ cont+"]: " + question);
-                                                            }
-                                                        }
-                                                        break;
-                                                    case 2:
-                                                        if (nPerguntas == 3 || nPerguntas == 4) {
-                                                            System.out.println("-----PREENCHIMENTO DAS PERGUNTAS PARA ESTE NIVEL-----");
-                                                            cont = 0;
-                                                            for (int i = 1; i <= nPerguntas; i++) {
-                                                                cont++;
-                                                                System.out.print("Pergunta [" +cont+ "]: ");
-                                                                String  pergunta = ler.nextLine();
-                                                                perguntas.add(pergunta);
+                                                            System.out.println("-----PERGUNTAS-----");
+                                                            //
+                                                            Administrador.ImprimirPergunta(perguntas);
+
+                                                            System.out.println("");
+                                                            System.out.println("-----OPCOES DAS RESPOSTAS-----");
+                                                            for (int i = 1; i <= nPerguntas ; i++) {
+                                                                System.out.println("OPCOES DE RESPOSTAS DA PERGUNTA [" + i + "]:");
+                                                                for (int j = 1; j <= nPerguntas; j++) {
+                                                                    System.out.print("Opcao [" + j + "]: ");
+                                                                    String  opResposta = ler.nextLine();
+                                                                    //
+                                                                    Administrador.PreencherOpcoesDasRespotas(opcoes, opResposta);
+                                                                }
                                                             }
 
-                                                            ler.nextLine();
 
-                                                            System.out.println("-----APRESENTACAO DAS PERGUNTAS-----");
-                                                            cont = 0;
-                                                            for (String question : perguntas) {
-                                                                cont++;
-                                                                System.out.println("["+ cont+"]: " + question);
-                                                            }
-                                                        }
-                                                        break;
-                                                    case 3:
-                                                        if (nPerguntas == 3 || nPerguntas == 4) {
-                                                            System.out.println("-----PREENCHIMENTO DAS PERGUNTAS PARA ESTE NIVEL-----");
-                                                            cont = 0;
-                                                            for (int i = 1; i <= nPerguntas; i++) {
-                                                                cont++;
-                                                                System.out.print("Pergunta [" +cont+ "]: ");
-                                                                String  pergunta = ler.nextLine();
-                                                                perguntas.add(pergunta);
-                                                            }
+                                                            System.out.println("");
 
-                                                            ler.nextLine();
+                                                         System.out.println("-----OPCOES-----");
+                                                             for (int j = 1; j <= nPerguntas; j++) {
+                                                                 System.out.println("PERGUNTA [" + j + "]:");
+                                                                 Administrador.ImprimirOpcoes(opcoes);
+                                                             }
 
-                                                            System.out.println("-----APRESENTACAO DAS PERGUNTAS-----");
-                                                            cont = 0;
-                                                            for (String question : perguntas) {
-                                                                cont++;
-                                                                System.out.println("["+ cont+"]: " + question);
-                                                            }
-                                                        }
-                                                        break;
-                                                    case 4:
-                                                        if (nPerguntas == 3 || nPerguntas == 4) {
-                                                            System.out.println("-----PREENCHIMENTO DAS PERGUNTAS PARA ESTE NIVEL-----");
-                                                            cont = 0;
-                                                            for (int i = 1; i <= nPerguntas; i++) {
-                                                                cont++;
-                                                                System.out.print("Pergunta [" +cont+ "]: ");
-                                                                String  pergunta = ler.nextLine();
-                                                                perguntas.add(pergunta);
-                                                            }
+                                                         ler.nextLine();
 
-                                                            ler.nextLine();
-
-                                                            System.out.println("-----APRESENTACAO DAS PERGUNTAS-----");
-                                                            cont = 0;
-                                                            for (String question : perguntas) {
-                                                                cont++;
-                                                                System.out.println("["+ cont+"]: " + question);
-                                                            }
-                                                        }
-                                                        break;
-                                                }
+                                                         for (int i = 1; i <= opcoes.size(); i++){
+                                                             System.out.println("Selcione a opcao certa da pergunta [" + i + "]:");
+                                                             int opCerta = ler.nextInt();
+                                                             Administrador.OpcaoCerta(perguntas, opcoes);
+                                                         }
+                                                         //
+                                                         for (int i = 1; i <= opcoes.size(); i++){
+                                                             System.out.println("RESPOSTA DA OPCAO [" + i + "]:");
+                                                             Administrador.OpcaoCerta(perguntas, opcoes);
+                                                         }
+                                                         System.out.println("");
                                             break;
                                         case 4:
-                                            System.out.println("Quantas temas deseja inserir? ");
+                                            System.out.println("Quantos temas deseja inserir? ");
                                             nTemas = ler.nextInt();
-                                            System.out.println("Quais os temas que deseja para este nivel? ");
 
                                             ler.nextLine();
 
-                                            while (!(nTemas == 4)) {                                        
-                                                System.out.println("So pode ter ate 4 temas!");
+                                            while (!(nTemas == 3)) {                                        
+                                                System.out.println("Deve ter 3 temas!");
                                                 System.out.println("Digite novamente! ");
                                                 nTemas = ler.nextInt();
                                                 break;
                                             }
 
-                                            ler.nextLine();
-
-                                            if ((nTemas == 4)){
-                                                for (int i = 1; i <= 4; i++) {
+                                            //ler.nextLine();
+                                            System.out.println("");
+                                            
+                                            System.out.println("-----PREENCHIMENTO DOS TEMAS PARA ESTE NIVEL-----");
+                                            ArrayList <String> temas = new ArrayList <String>();
+                                            
+                                            if (nTemas == 3){
+                                                for (int i = 1; i <= 3; i++) {
                                                     System.out.print("Tema [" + i + "]: ");
                                                     String tema = ler.nextLine();
-                                                    temas.add(tema);
+
+                                                    //
+                                                    Administrador.PreencherTema(temas, tema);
                                                 }
                                             }
 
-                                            ler.nextLine();
-
-                                            cont = 0;
+                                            //ler.nextLine();
+                                            System.out.println("");
+                                            
                                             System.out.println("-----TEMAS-----");
-                                            for (String themes : temas) {
-                                                cont++;
-                                                System.out.println("["+cont+"]: "  + themes);
-                                            }
+                                            
+                                            //
+                                            Administrador.ImprimirTema(temas);
+
                                             System.out.println("");
                                             System.out.println("Digite o numero de perguntas que deseja inserir:");
                                             nPerguntas = ler.nextInt();
 
                                             while (!(nPerguntas == 3 || nPerguntas == 4) ) {                                            
-                                                System.out.println("O jogo deve possuir no minimo 3 perguntas e no maximo 4!");
+                                                System.out.println("O jogo deve possuir no minimo 3 perguntas!");
                                                 System.out.println("Digite novamente o numero de perguntas que deseja inserir: ");
                                                 nPerguntas = ler.nextInt();
                                             }
-
-                                            ler.nextLine();
+                                            
+                                            System.out.println("");
+                                            //ler.nextLine();
 
                                             System.out.println("Digite qual o tema que deseja que a pergunta seja inserida:");
                                             temaP = ler.nextInt();
 
-                                            System.out.println("");
-                                            /*while (!(temaP == 4)) {
+                                           // System.out.println("");
+                                            /*while ((temaP < 1 || temaP > temas.size())) {
                                                 System.out.println("Deve selecionar as opcoes disponiveis!");
                                                 System.out.println("Digite navamente o tema que deseja que a pergunta seja inserida!");
                                                 temaP = ler.nextInt();
                                             }*/
-                                            if (temaP == 4) {
-                                                ler.nextLine();
-                                                switch (temaP){
+                                           //if (temaP > 0 && temaP <= temas.size()) {
+                                            ler.nextLine();
+                                            
+                                            //System.out.println("");
+                                            if (nPerguntas == 3 || nPerguntas == 4) {
+                                                switch (temaP ){ //temas.size()
                                                     case 1:
-                                                        if (nPerguntas == 3 || nPerguntas == 4) {
                                                             System.out.println("-----PREENCHIMENTO DAS PERGUNTAS PARA ESTE NIVEL-----");
-                                                            cont = 0;
+                                                            
                                                             for (int i = 1; i <= nPerguntas; i++) {
-                                                                cont++;
-                                                                System.out.print("Pergunta [" +cont+ "]: ");
+                                                                System.out.print("Pergunta [" +i+ "]: ");
                                                                 String  pergunta = ler.nextLine();
-                                                                perguntas.add(pergunta);
+
+                                                                //
+                                                                System.out.println("Digite as respostas [" + i + "]:");
+                                                                String resposta = ler.nextLine();
+                                                                Administrador.PerguntaResposta(perguntas, respostas, pergunta, resposta);
                                                             }
 
-                                                            ler.nextLine();
+                                                            System.out.println("");
+                                                            //ler.nextLine();
 
-                                                            System.out.println("-----APRESENTACAO DAS PERGUNTAS-----");
-                                                            cont = 0;
-                                                            for (String question : perguntas) {
-                                                                cont++;
-                                                                System.out.println("["+ cont+"]: " + question);
-                                                            }
-                                                        }
-                                                        break;
-                                                    case 2:
-                                                        if (nPerguntas == 3 || nPerguntas == 4) {
-                                                            System.out.println("-----PREENCHIMENTO DAS PERGUNTAS PARA ESTE NIVEL-----");
-                                                            cont = 0;
-                                                            for (int i = 1; i <= nPerguntas; i++) {
-                                                                cont++;
-                                                                System.out.print("Pergunta [" +cont+ "]: ");
-                                                                String  pergunta = ler.nextLine();
-                                                                perguntas.add(pergunta);
+                                                            System.out.println("-----PERGUNTAS-----");
+                                                            //
+                                                            Administrador.ImprimirPergunta(perguntas);
+
+                                                            System.out.println("");
+                                                            System.out.println("-----OPCOES DAS RESPOSTAS-----");
+                                                            for (int i = 1; i <= nPerguntas ; i++) {
+                                                                System.out.println("OPCOES DE RESPOSTAS DA PERGUNTA [" + i + "]:");
+                                                                for (int j = 1; j <= nPerguntas; j++) {
+                                                                    System.out.print("Opcao [" + j + "]: ");
+                                                                    String  opResposta = ler.nextLine();
+                                                                    //
+                                                                    Administrador.PreencherOpcoesDasRespotas(opcoes, opResposta);
+                                                                }
                                                             }
 
-                                                            ler.nextLine();
 
-                                                            System.out.println("-----APRESENTACAO DAS PERGUNTAS-----");
-                                                            cont = 0;
-                                                            for (String question : perguntas) {
-                                                                cont++;
-                                                                System.out.println("["+ cont+"]: " + question);
-                                                            }
-                                                        }
-                                                        break;
-                                                    case 3:
-                                                        if (nPerguntas == 3 || nPerguntas == 4) {
-                                                            System.out.println("-----PREENCHIMENTO DAS PERGUNTAS PARA ESTE NIVEL-----");
-                                                            cont = 0;
-                                                            for (int i = 1; i <= nPerguntas; i++) {
-                                                                cont++;
-                                                                System.out.print("Pergunta [" +cont+ "]: ");
-                                                                String  pergunta = ler.nextLine();
-                                                                perguntas.add(pergunta);
-                                                            }
+                                                            System.out.println("");
 
-                                                            ler.nextLine();
+                                                         System.out.println("-----OPCOES-----");
+                                                             for (int j = 1; j <= nPerguntas; j++) {
+                                                                 System.out.println("PERGUNTA [" + j + "]:");
+                                                                 Administrador.ImprimirOpcoes(opcoes);
+                                                             }
 
-                                                            System.out.println("-----APRESENTACAO DAS PERGUNTAS-----");
-                                                            cont = 0;
-                                                            for (String question : perguntas) {
-                                                                cont++;
-                                                                System.out.println("["+ cont+"]: " + question);
-                                                            }
-                                                        }
-                                                        break;
-                                                    case 4:
-                                                        if (nPerguntas == 3 || nPerguntas == 4) {
-                                                            System.out.println("-----PREENCHIMENTO DAS PERGUNTAS PARA ESTE NIVEL-----");
-                                                            cont = 0;
-                                                            for (int i = 1; i <= nPerguntas; i++) {
-                                                                cont++;
-                                                                System.out.print("Pergunta [" +cont+ "]: ");
-                                                                String  pergunta = ler.nextLine();
-                                                                perguntas.add(pergunta);
-                                                            }
+                                                         ler.nextLine();
 
-                                                            ler.nextLine();
-
-                                                            System.out.println("-----APRESENTACAO DAS PERGUNTAS-----");
-                                                            cont = 0;
-                                                            for (String question : perguntas) {
-                                                                cont++;
-                                                                System.out.println("["+ cont+"]: " + question);
-                                                            }
-                                                        }
-                                                        break;
-                                                    }
-                                                }
-                                            break;
-                                        }
-                                    }
-                                }
+                                                         for (int i = 1; i <= opcoes.size(); i++){
+                                                             System.out.println("Selcione a opcao certa da pergunta [" + i + "]:");
+                                                             int opCerta = ler.nextInt();
+                                                             Administrador.OpcaoCerta(perguntas, opcoes);
+                                                         }
+                                                         //
+                                                         for (int i = 1; i <= opcoes.size(); i++){
+                                                             System.out.println("RESPOSTA DA OPCAO [" + i + "]:");
+                                                             Administrador.OpcaoCerta(perguntas, opcoes);
+                                                         }
+                                                         System.out.println("");
                                 break;
                         case 3:
                             break;
-                    }
-                }
+                    }    
+                }        
                 cont++;
                 System.out.println("");
             }while(cont != 3);
